@@ -1,0 +1,25 @@
+ul.countdown {
+list-style: none;
+padding: 0;
+display: block;
+text-align: center;
+}
+
+ul.countdown li {
+display: inline-block;
+}
+
+ul.countdown li span {
+font-size: 40px;
+line-height: 50pt;
+font-weight: 300;
+}
+
+ul.countdown li.seperator {
+font-size: 40px;
+vertical-align: top;
+}
+
+ul.countdown li p {
+font-size: 14px;
+}
