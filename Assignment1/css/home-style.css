@@ -42,7 +42,12 @@ nav ul.navbar-nav li#contact:hover {
 }
 
 .product aside {
-	background-color: #FFFFFF;
+	background: #FFFFFF;
+}
+
+.product #past-product {
+	background-clip: content-box;
+	padding-right: 0px;
 }
 
 .product .content {

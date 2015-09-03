@@ -11,8 +11,13 @@
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/home-style.css">
 	<link rel="stylesheet" type="text/css" href="css/count-down.css">
+	<link rel="stylesheet" type="text/css" href="css/past-product.css">
+	<script src="lib/handlebars-v4.0.0/handlebars-v4.0.0.js"></script>
 	<script src="lib/jquery.countdown/jquery.downCount.js"></script>
+	<script src="script/count-down.js"></script>
+	<script src="script/templates.js"></script>
 <body>
+<div class="template"></div>
 <header>
 	<nav class="navbar navbar-default">
 		<div id="logo" class="col-md-1 nav navbar-nav">
@@ -124,25 +129,55 @@
 							<p class="seconds_ref">Giây</p>
 							</li>
 						</ul>
-						<script class="source" type="text/javascript">
-						$('.countdown').downCount({
-							date: '09/09/2015 12:00:00',
-							offset: +10
-							}, function () {
-						});
-						</script>
 	    			</span>
 	    			<button class="btn btn-danger total-bet">Số lượt đấu giá <span class="badge total-bet">40</span></button>
 	    			<button class="btn btn-success bet">Tham gia đấu giá</button>
 	    		</aside>
     		</div>
     	</aside>
-    	<div class="vertical-separator"></div>
-    	<aside id="pass-product" class="col-md-5" >
-    		
+    	<aside id="past-product" class="col-md-5">
+    	<ul class="list-product" style="margin-top:5px">
+    		<li class="row">
+    			<div class="product-details">
+    				<aside class="product-img col-md-6">
+    					<img src="img/products/samsung-galaxy-a8-1-400x533.png">
+    				</aside>
+    				<aside class="details col-md-6">
+    					<div class="product-sort-details">
+		    				<h4><center>Samsung Galaxy A8</center></h4>
+		    				<ul>
+			    				<li><h5>Giá: <b>14.000.000đ</b></h5></li>
+			    				<li><h5>Thời gian:<br><b>18:05 02/09/2015</b></h5></li>
+		    				</ul>
+		    			</div>
+    					<button class="btn btn-primary total-bet">Số lượt đấu giá <span class="badge total-bet">20<i class="glyphicon glyphicon-user"></i></span></button>
+    					<button class="btn btn-danger total-bet"><i class="glyphicon glyphicon-plus"></i> Xem chi tiết</span></button>
+    				</aside>
+    			</div>
+    		</li>
+    		<hr style="margin-right:20px">
+    		<li class="row">
+    			<div class="product-details">
+    				<aside class="product-img col-md-6">
+    					<img src="img/products/samsung-galaxy-grand-prime-g530-1-400x533.png">
+    				</aside>
+    				<aside class="details col-md-6">
+    					<div class="product-sort-details">
+		    				<h4><center>Samsung Galaxy Prime</center></h4>
+		    				<ul>
+			    				<li><h5>Giá: <b>18.000.000đ</b></h5></li>
+			    				<li><h5>Thời gian:<br><b>18:05 02/09/2015</b></h5></li>
+		    				</ul>
+		    			</div>
+    					<button class="btn btn-primary total-bet">Số lượt đấu giá <span class="badge total-bet">20<i class="glyphicon glyphicon-user"></i></span></button>
+    					<button class="btn btn-danger total-bet"><i class="glyphicon glyphicon-plus"></i> Xem chi tiết</span></button>
+    				</aside>
+    			</div>
+    		</li>
     	</aside>
     </div>
 </div>
+<div></div>
 <footer style="bcakground-color:#000">
 </footer>
 </body>
