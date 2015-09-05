@@ -12,10 +12,12 @@
 	<link rel="stylesheet" type="text/css" href="css/home-style.css">
 	<link rel="stylesheet" type="text/css" href="css/count-down.css">
 	<link rel="stylesheet" type="text/css" href="css/past-product.css">
+	<link rel="stylesheet" type="text/css" href="css/current-product.css">
 	<script src="lib/handlebars-v4.0.0/handlebars-v4.0.0.js"></script>
 	<script src="lib/jquery.countdown/jquery.downCount.js"></script>
 	<script src="script/count-down.js"></script>
 	<script src="script/templates.js"></script>
+	<script src="script/function.js"></script>
 <body>
 <div class="template"></div>
 <header>
@@ -178,7 +180,8 @@
     </div>
 </div>
 <div></div>
-<footer style="bcakground-color:#000">
+<footer class="navbar navbar-inverse">
+
 </footer>
 </body>
 </html>

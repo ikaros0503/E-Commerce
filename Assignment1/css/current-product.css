@@ -1,0 +1,42 @@
+.product .content {
+	display: inline-block;
+}
+
+.product .product-image {
+	transform: translate(0,25%);
+}
+
+.product .product-image img {
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	margin: 0 auto;
+}
+
+#current-product .product-sort-details {
+	line-height: 20pt;
+	border-bottom: 1px solid #000;
+	padding-bottom: 10px;
+}
+
+.product-sort-details h2{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #000;
+}
+h2.start-price {
+	color: red;
+}
+
+button.total-bet, .bet {
+	width: 100%;
+	margin: 2px auto;
+}
+
+.product-sort-details li {
+	list-style-position: inside;
+	border-top: 1px solid #e7e7e7
+}
+
+.product-sort-details li:first-child {
+	border-top: 0px;
+}

@@ -34,6 +34,10 @@ nav ul.navbar-nav li#contact:hover {
 	background-color: #FB5454 !important;
 }
 
+#banner {
+	width: 1150px;
+}
+
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
       width: 100%;
@@ -41,56 +45,18 @@ nav ul.navbar-nav li#contact:hover {
       height:345 !important;
 }
 
-.product aside {
+.product aside#current-product, aside#past-product {
 	background: #FFFFFF;
+	box-shadow: 1px 1px 1px #888888;
 }
 
-.product #past-product {
-	background-clip: content-box;
-	padding-right: 0px;
+footer.navbar {
+	margin-top: 20px;
+	margin-bottom: 0px;
 }
 
-.product .content {
-	display: inline-block;
-}
-
-.product .product-image {
-	transform: translate(0,25%);
-}
-
-.product .product-image img {
-	width: 100%;
-	height: 100%;
-	background-size: contain;
-	margin: 0 auto;
-}
-
-.product-sort-details {
-	line-height: 20pt;
-	border-bottom: 1px solid #000;
-	padding-bottom: 10px;
-}
-
-.product-sort-details h2{
-	padding-bottom: 10px;
-	border-bottom: 1px solid #000;
-}
-h2.start-price {
-	color: red;
-}
-
-button.total-bet, .bet {
-	width: 100%;
-	margin: 2px auto;
-}
-
-.product-sort-details li {
-	list-style-position: inside;
-	border-top: 1px solid #e7e7e7
-}
-
-.product-sort-details li:first-child {
-	border-top: 0px;
+.navbar-right {
+	margin-right: 0px;
 }
 
 

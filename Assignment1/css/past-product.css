@@ -53,6 +53,8 @@ ul.list-product {
   margin-right: 10px;
 }
 
-#past-product .details button.total-bet {
-  margin-top: 10px;
+
+.product #past-product {
+  padding-right: 0px;
+  margin-left: 10px;
 }
