@@ -1,0 +1,15 @@
+.scroll-bar {
+	width: inherit;
+	min-height: 30px !important;
+	margin-bottom: 0 !important;
+	background-image: none;
+	position: absolute;
+	background-repeat: repeat-x;
+}
+
+.scroll-bar.arrow {
+	width: 10px !important;
+	height: 30px !important;
+	background-color: transparent;
+	margin: auto !important;
+}
