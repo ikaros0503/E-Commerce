@@ -5,7 +5,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 mysqli_select_db($conn,'assignment_ado');
-$query = "select ProductId, Name, Info, CurrentPrice, CurrentUser, OwnerId, Duration, ProductImg, Username, IsPrgStatus, TotalBet, Type, CreatedDate, StartTime, ExpireTime from vproducts where IsPrgStatus != 4 Order by CreatedDate desc limit 10";
+$query = "select ProductId, Name, Info, CurrentPrice, CurrentUser, OwnerId, Duration, ProductImg, Username, IsPrgStatus, TotalBet, Type, CreatedDate, StartTime, ExpireTime from vproducts where IsPrgStatus != 4 Order by CreatedDate desc limit 100";
 if (isset($_GET['Id'])){
 	$id = $_GET['Id'];
  	$query = "select ProductId, Name, Info, CurrentPrice, CurrentUser, OwnerId, Duration, ProductImg, Username, IsPrgStatus, TotalBet, Type, CreatedDate, StartTime, ExpireTime from vproducts where IsPrgStatus != 4 and OwnerId=$id Order by CreatedDate";

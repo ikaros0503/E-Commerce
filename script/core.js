@@ -45,7 +45,7 @@ loginComplete = function(id, username) {
 switchToLoginCompletePage = function(){
 	$('.user-account').addClass('hidden');
 	$('.user-login-complete').removeClass('hidden');
-	$('.user-login-complete').find('.welcome').html("Welcome, " + user.Username)
+	$('.user-login-complete').find('.welcome').html("WELCOME, " + user.Username)
 	$('.hide-tool-box').fadeIn(100,function(){
 		$(this).css('display','flex');
 		initializeMenu();

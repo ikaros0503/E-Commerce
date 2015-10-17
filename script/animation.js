@@ -1,6 +1,6 @@
 initListener = function() {
 
-	$('.btn-register').unbind().click(function(){
+	$('.link-register').unbind().click(function(){
 		$('.fade-ground').addClass('in');
 		show($('.register-modal'), function(){
 			initRegisterModal();
@@ -10,7 +10,7 @@ initListener = function() {
 		});
 	});
 
-	$('.btn-login').unbind().click(function(){
+	$('.link-login').unbind().click(function(){
 		show($('.login-modal'), function(){
 			initLoginModal();
 			$('.login-modal').find('.btn-cancel').unbind().click(function(){
@@ -19,94 +19,7 @@ initListener = function() {
 		});
 	});
 
-	$('a[href="#home"]').click(function(e){
-		$('.pass-product').removeClass('selected');
-		loadBanner();
-	});
-	$('a[href="#changePassword"]').unbind().click(function(e){
-		var callback = function() {
-			var modal = $('.change-password-modal');
-			modal.find('.btn-save').unbind().click(function(e){
-				if (validateFormField(modal)) return;
-				var obj = {};
-				obj['Id'] = user.Id;
-				obj['Password'] = modal.find('input[name="Password"]').val();
-				$.ajax({
-					url:'Core/update-account.php',
-					method:'post',
-					data:obj,
-					success: function(data){
-						if (data != "ERROR") {
-							showSuccessful("Change password successfully!");
-						} else {
-							showError('An error occur when change password! Please try again!')
-						}
-					}
-				});
-			});
-		}
-		showChangePass(callback);
-	});
-
-	$('a[href="#updateInfo"]').click(function(e){
-		var callback = function() {
-			var modal = $('.update-info-modal');
-			$.each(user, function(key,val){
-				modal.find('input[name="'+key+'"]').val(val);
-				console.log(key,val);
-			});
-			modal.find('.btn-save').click(function(){
-				if (validateFormField(modal)) return;
-				var obj = {};
-				obj['Id'] = user.Id;
-				obj['FirstName'] = modal.find('input[name="FirstName"]').val();
-				obj['LastName'] = modal.find('input[name="LastName"]').val();
-				obj['Phone'] = modal.find('input[name="Phone"]').val();
-				obj['Address'] = modal.find('input[name="Address"]').val();
-				$.ajax({
-					url:'Core/update-account.php',
-					method:'post',
-					data:obj,
-					success: function(data){
-						if (data != "ERROR") {
-							user.FirstName = obj['FirstName'];
-							user.LastName = obj['LastName'];
-							user.Phone = obj['Phone'];
-							user.Address = obj['Address'];
-							showSuccessful("Update info successfully!");
-						} else {
-							showError('An error occur! Please try again!')
-						}
-					}
-				});
-			});
-		}
-		showUpdateInfo(callback);
-	});
-	$('a[href="#addProduct"]').click(function(e){
-		$('.pass-product').removeClass('selected');
-		$('.container').fadeOut(200,function(){
-			$(this).load('templates/addProduct.html', function(){
-				$(this).css('width','72%');
-				$('.container').fadeIn(300,function(){
-					initializeAddProductForm();
-				});
-			});
-		});
-	});
-
-	$('a[href="#showProduct"]').click(function(e){
-		$('.pass-product').removeClass('selected');
-		$('.container').fadeOut(200,function(){
-			$(this).load('templates/showproduct.html', function(){
-				$(this).css('width','72%');
-				getProductById(user.Id);
-				$(this).fadeIn(200,function(){
-
-				});
-			});
-		});
-	});
+	
 	$('.text-search').unbind().keyup(function(e){
 		if (e.keyCode == 13) {
 			var name = $(this).val();

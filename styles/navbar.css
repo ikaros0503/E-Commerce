@@ -1,7 +1,8 @@
 .navbar-default {
-	background-color: #f8f8f8;
+    background-color: #3b3b3b;
+    opacity: 0.9;
     border-color: #e7e7e7;
-    background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+    /*background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);*/
     box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
 }
 
@@ -13,8 +14,6 @@
 	position: relative;
     min-height: 50px;
     margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
 }
 
 .navbar-nav {
@@ -41,13 +40,13 @@
     margin-left: 50px;
     width: 60%;
     height: 20px;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .text-search {
-    background-image: url(../icon/search-icon.png);
-    background-position: right;
-    background-repeat: no-repeat;
+    background-image: url(../icon/search-icon.png) !important;
+    background-position: 98% 50% !important;
+    background-repeat: no-repeat !important;
 }
 
 .navbar .logo-img {
@@ -55,7 +54,6 @@
 }
 
 .navbar .user-account {
-    margin-top: 5px;
     float: right;
     margin-right: 20px;
 }
@@ -86,18 +84,23 @@
 .user-login-complete {
     display: inline-flex;
     vertical-align: middle;
-    margin-top: 15px !important;
-    font-size: 13pt;
 }
 
 .user-login-complete .welcome {
-    padding-right: 10px;
-    border-right: 1px solid #ccc;
+    padding: 15px 20px;
+    border-right: 1px solid #f1c40f;
+    font-weight: 700;
+    color: #ecf0f1;
+    transition:color 0.2s linear;
+}
+
+.user-login-complete .welcome:hover {
+    color: #f1c40f;
 }
 
 .user-login-complete .log-out {
     padding-left: 10px;
-    border-left: 1px solid #ccc; 
+    border-left: 1px solid #f1c40f; 
 }
 
 .user-login-complete a:link {
@@ -112,4 +115,41 @@
 
 .logo-img img {
     margin-left: 20px;
+}
+.user-account {
+    display: flex;
+    vertical-align: middle;
+}
+
+.user-account a {
+    font-family: 'Archivo Narrow', sans-serif;
+    padding: 15px 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ecf0f1;
+    transition: color 0.2s linear;
+}
+
+.user-account a:hover {
+    color: #f1c40f;
+}
+
+.logo-img {
+    display: flex;
+    vertical-align: middle;
+} 
+
+.logo-img a {
+    font-family: 'Archivo Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 20pt;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 20px;
+    background-color: #3b3b3b;
+    transition:text-shadow 0.1s linear;
+}
+
+.logo-img a:hover {
+    text-shadow: #fff 0 0 10px;
 }
