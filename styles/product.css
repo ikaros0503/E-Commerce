@@ -1,0 +1,194 @@
+.product-image {
+	width: 100%;
+	height: 140px;
+}
+
+.product-image img.product-img {
+	display: block;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.product-name {
+	margin-top: 5px;
+	font: 14px/18px Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+	font-weight: bold;
+	/*font-size: 15pt;*/
+}
+
+.product-details .product-name{
+	font-size: 15pt;
+}
+
+.product.pass-product {
+	cursor: pointer;
+	background-color: white;
+}
+
+.show-product-image {
+	width: 55%;
+	height: 100%;
+	background-color: #BBB5B5;
+	float: left;
+}
+
+.product.product-details {
+	width: 43%;
+	margin-left: 10px;
+	font: 14px/18px Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+	color: #666;
+	font-weight: normal;
+	float: left;
+}
+
+.parameter {
+	display: block;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+}
+
+.parameter li {
+	display: table;
+    background: #fff;
+    width: 100%;
+}
+
+.parameter li span {
+	display: table-cell;
+    width: 35%;
+    vertical-align: top;
+    padding: 6px 5px;
+    font-size: 13px;
+    color: #666;
+}
+
+.parameter li div {
+	display: table-cell;
+    width: auto;
+    vertical-align: top;
+    padding: 6px 5px;
+    font-size: 13px;
+    color: #333;
+}
+
+.product.pass-product.selected {
+	-moz-box-shadow:    inset 0 0 20px #FFFFFF;
+   	-webkit-box-shadow: inset 0 0 20px #FFFFFF;
+   	box-shadow:         inset 0 0 20px #FFFFFF;
+	background-color: #888888; 
+}
+
+.pass-product .no-product {
+	display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.product-details .product-info {
+	padding-top: 20px;
+	width: 100%;
+    min-height: 200px;
+    max-height: 250px;
+    border-bottom: 1px solid #ccc;
+}
+
+.product-duration {
+	width: 100%;
+    min-height: 100px;
+    max-height: 180px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.btn-bet {
+	font-size: 15pt;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.product-price {
+	font-size: 15pt;
+    font-weight: bold;
+    margin-top: 20pt;
+    color: red;
+}
+
+.show-product-image .image-slider {
+	z-index: 100;
+	width: 100%;
+	height: 70px;
+	border-top: 1px solid #ccc;
+	mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+}
+
+.show-product-image .image-slider ul {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+	box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+.show-product-image .image-slider ul li {
+	display: inline-block;
+	width: 85px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.show-product-image .image-slider ul li:hover {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  	background: rgba(255, 255, 255, 0.1);
+}
+.show-product-image .image-slider ul li.active {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  	background: rgba(255, 255, 255, 0.1);
+}
+
+.show-product-image .image-slider ul li img {
+	height: 70px;
+
+}
+
+.show-product-image .image-view {
+	height: 81%;
+	width: 100%;
+}
+
+.image-view {
+	position: relative;
+}
+
+.image-view img{
+  	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    max-width:100%;
+	max-height:95%;
+}
+
+.info {
+	width: 100%;
+	height: 140px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+    padding: 10px;
+}
+
+.countdown {
+	color: blue;
+    font-weight: bold;
+    font-size: 20pt;
+    text-align: center;
+    padding-top: 20px;
+}

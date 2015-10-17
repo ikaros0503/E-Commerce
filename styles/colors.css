@@ -1,0 +1,23 @@
+.bg-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.bg-primary {
+  color: #fff;
+  background-color: #4F99D9 !important;
+  border-color: #4F99D9;
+}
+
+.bg-success {
+	 color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.bg-warning {
+	color: #fff;
+  	background-color: #f0ad4e;
+  	border-color: #eea236;
+}

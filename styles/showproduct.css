@@ -1,0 +1,41 @@
+.module-content.show-product {
+	overflow-y: scroll;
+	max-height: 380px;
+	min-height: 380px;
+	background-color: #F5F5F5;
+}
+
+.module-content.show-product::-webkit-scrollbar {
+    display: none;
+}
+
+.module-content.show-product ul{
+	list-style-type: none;
+}
+
+.module-content.show-product ul li {
+	display: inline-block;
+	width: 160px;
+	height: 200px;
+	padding: 20px;
+	margin: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.module-content.show-product ul li .image-preview, .module-content img {
+	width: 150px;
+	height: 150px;
+}
+
+.tool button {
+	width: 75px;
+}
+
+.module-content.show-product .image-preview {
+	border:none;
+}
+.module-content.show-product .image-preview:hover {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  	background: rgba(255, 255, 255, 0.1);
+}

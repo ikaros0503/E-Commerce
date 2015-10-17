@@ -1,0 +1,125 @@
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);*/
+.tool-box,
+.tool-box ul,
+.tool-box li,
+.tool-box a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  position: relative;
+}
+.tool-box a {
+  line-height: 1.3;
+}
+
+.tool-box {
+  width: 130px;
+  left: -130px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+.tool-box > ul > li > a {
+  padding-right: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  display: block;
+  background: #121EAD;
+  color: #ffffff;
+  border-bottom: 1px solid #071A5E;
+  text-transform: uppercase;
+  position: relative;
+}
+.tool-box > ul > li > a > span {
+  background: #354AE2;
+  padding: 10px;
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+}
+.tool-box > ul > li > a:hover {
+  text-decoration: none;
+}
+
+.tool-box > ul > li.active {
+  border-bottom: none;
+}
+.tool-box > ul > li.active > a {
+  color: #fff;
+}
+.tool-box > ul > li.active > a span {
+  background: #121EAD;
+}
+.tool-box span.cnt {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+.tool-box ul ul {
+  display: block;
+}
+.tool-box ul ul li {
+  border: 1px solid #e0e0e0;
+  border-top: 0;
+  background-color: #fff;
+}
+.tool-box ul ul a {
+  padding: 10px;
+  display: block;
+  color: #121EAD;
+  font-size: 13px;
+}
+.tool-box ul ul a:hover {
+  color: #bd0e36;
+}
+.tool-box ul ul li.odd {
+  background: #f4f4f4;
+}
+.tool-box ul ul li.even {
+  background: #fff;
+}
+
+.tool-box.in {
+  left: 0px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -ms-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+.hide-tool-box.hide {
+  background-color: #354AE2;
+}
+
+.hide-tool-box {
+  text-align: center;
+  display: none;
+  align-items:center;
+  border-bottom: 1px solid #354AE2;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  width: 35px;
+  min-height: 35px;
+  margin-top: 30px;
+  background-color: #354AE2;
+  text-transform: uppercase;
+}
+
+.hide-tool-box a,.hide-tool-box a:hover,
+.hide-tool-box a:visited,.hide-tool-box a:active {
+  color: #fff;
+  text-decoration: none;
+}

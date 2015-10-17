@@ -1,0 +1,67 @@
+	<div class="module-header text-center bg-primary">
+		<h2>ADD NEW PRODUCT</h2>
+	</div>
+	<div class="module-content">
+		<div class="left-side">
+			<form id="upload_file" method="post" enctype="multipart/form-data" action='Core/upload_image.php'>
+			<div class="product-img">
+				<div class="header text-center"><h3>Product Picture</h3></div>
+				<ul>
+					<li>
+						<div class="image-box">
+							<div class="image-preview">
+							</div>
+							<input type="file" id="file1" name="file1"/>
+							<button class="button" type="button">Select File</button>
+						</div>
+					</li>
+					<li>
+						<div class="image-box">
+							<div class="image-preview">
+							</div>
+							<input type="file" id="file2" name="file2"/>
+							<button class="button" type="button">Select File</button>
+						</div>
+					</li>
+					<li>
+						<div class="image-box">
+							<div class="image-preview">
+							</div>
+							<input type="file" id="file3" name="file3"/>
+							<button class="button" type="button">Select File</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			</form>
+			<div class="product-auction-info">
+				<div class="header text-center" style="padding-top:10px"><h3>Auction Settings</h3></div>
+				<div class="auction-setting">
+					<label><b>Start Price</b></label>
+					<input type="text" class="text form-control" name="StartPrice" style="width:40%" placeholder="Put your product's start price">
+					<label><b>Duration</b></label>
+					<input type="text" class="text form-control" name="Duration" style="width:50%" placeholder="* Value is hour">
+					<label><b>Type of Auction</b></label>
+					<select class="form-control" style="width:30%">
+						<option value="1">Open Auction</option>
+						<option value="2">Close Auction</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="right-side">
+			<div class="product-info">
+				<div class="header text-center"><h3>Product Info</h3></div>
+				<label><b>Product Name</b></label>
+				<input type="text" name="ProductName" class="text form-control" style="width:300px
+				" placeholder="Type your product name">
+				<br>
+				<label><b>Product details</b></label>
+				<textarea class="text form-control" rows="10" placeholder="Let's introduce your product"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="module-footer text-center">
+		<button type="button" class="btn btn-success add-product" style="margin-top:5px; width:100px"><b>Add</b></button>
+		<button type="button" class="btn btn-default clear" style="margin-top:5px; width:100px" ><b>Clear</b></button>
+	</div>

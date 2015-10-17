@@ -1,3 +1,0 @@
-bindEventOnForm = function() {
-	var details = $()
-}
