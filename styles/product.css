@@ -201,6 +201,11 @@
 	border-radius: 5px;
 	box-sizing: border-box;
     padding: 10px;
+    outline: none;
+}
+
+.info::-webkit-scrollbar {
+	display: none;
 }
 
 .countdown {

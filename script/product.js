@@ -24,6 +24,7 @@ initPassproduct = function(){
 				});
 			} else {
 				$('.content .container').load('templates/product-tpl.html',function(){
+					console.log('OK');
 					renderProduct(id);
 					initSlider(id);
 					initEventForSlider();
@@ -77,7 +78,7 @@ function renderProduct(id) {
 	var product_view = $('.product.product-details');
 	product_view.find('.product-name').html(product.Name);
 	product_view.find('.author').html(product.Username);
-	product_view.find('.product-info .info').html(product.Info);
+	product_view.find('.product-info .info').val(product.Info);
 	product_view.find('.product-price').html(toMoney(product.CurrentPrice)+'đ');
 	if (product.Type != 2) {
 		product_view.find('span.total-bet').html(product.TotalBet);

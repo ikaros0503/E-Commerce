@@ -2,7 +2,6 @@ vRqs = function(obj,callback) {
 	var _url = ajax[obj.Name].url;
 	var _method = ajax[obj.Name].method;
 	var _data = obj.Data;
-	console.log(obj);
 	$.ajax({
 		url : _url,
 		method : _method,
