@@ -91,7 +91,11 @@
     border-right: 1px solid #f1c40f;
     font-weight: 700;
     color: #ecf0f1;
-    transition:color 0.2s linear;
+    -webkit-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    -ms-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    transition: color 0.2s linear;
 }
 
 .user-login-complete .welcome:hover {
@@ -127,6 +131,10 @@
     font-weight: 700;
     text-decoration: none;
     color: #ecf0f1;
+    -webkit-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    -ms-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
     transition: color 0.2s linear;
 }
 
@@ -147,7 +155,11 @@
     color: #fff;
     padding: 12px 20px;
     background-color: #3b3b3b;
-    transition:text-shadow 0.1s linear;
+    -webkit-transition: text-shadow 0.2s linear;
+    -moz-transition: text-shadow 0.2s linear;
+    -ms-transition: text-shadow 0.2s linear;
+    -o-transition: text-shadow 0.2s linear;
+    transition: text-shadow 0.2s linear;
 }
 
 .logo-img a:hover {

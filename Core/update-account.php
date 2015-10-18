@@ -4,7 +4,7 @@ $conn = connectToDB();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-mysqli_select_db($conn,'assignment_ado');
+mysqli_select_db($conn,$db_name);
 $id = 0;
 $password = "Password";
 $first_name = "FirstName";
@@ -28,11 +28,11 @@ if (isset($_POST['CurrentPassword'])) {
 		if ($row = mysqli_fetch_assoc($cur_result)) {
 			$hashed = $row['Password'];
 			if (!password_verify($current_password,$hashed)) {
-				echo "ERROR";
+				echo 2;
 				die;
 			}
 		} else {
-			echo "ERROR";
+			echo 3;
 			die;
 		}	
 	}
@@ -40,8 +40,8 @@ if (isset($_POST['CurrentPassword'])) {
 $sql = "Update account set Password=$password, FirstName=$first_name,LastName=$last_name,Phone=$phone,Address=$address where Id=$id";
 $result = mysqli_query($conn,$sql);
 if ($result) {
-	echo "SUCCESS";
+	echo 1;
 } else {
-	echo "ERROR";
+	echo 3;
 }
 ?>

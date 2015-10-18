@@ -16,7 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="styles/modal.css">
 	<link rel="stylesheet" type="text/css" href="styles/colors.css">
 	<link rel="stylesheet" type="text/css" href="styles/menu.css">
-	<link rel="stylesheet" type="text/css" href="libs/bootstrap-awesome-icon/font-awesome.min.css">
 	<link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css">
 
 	<link rel="stylesheet" href="libs/owl-carousel/owl.theme.css">
@@ -32,6 +31,8 @@
 	<link rel="stylesheet" type="text/css" href="styles/showproduct.css">
 	<script type="text/javascript" src="script/add-product.js"></script>
 	<script type="text/javascript" src="templates/templates.js"></script>
+	<script type="text/javascript" src="templates/config.js"></script>
+	<script type="text/javascript" src="script/core-function.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default header-bar">
@@ -42,30 +43,31 @@
 			<input type="text" class="text text-search form-control" placeholder="Enter text to search">
 		</div>
 		<div class="user-account">
-			<a href="#register" class="link-register"> REGISTER</a>
-			<a href="#login" class="link-login"> LOGIN</a>
+			<a href="#register" class="link-register"> ĐĂNG KÝ</a>
+			<a href="#login" class="link-login"> ĐĂNG NHẬP</a>
 		</div>
 		<div class="user-login-complete user-account hidden">
 			<span class="welcome"></span>
-			<div class="log-out"><a href="Core/logout.php" class="inset-text-effect">LOG OUT</a></div>
+			<div class="log-out"><a href="Core/logout.php" class="inset-text-effect">ĐĂNG XUẤT</a></div>
 		</div>
 	</div>
 	<div class="content">
 		<div class="owner-product">
 			<div class="hide-tool-box hide">&nbsp;<a href='#'>&lt;&lt;&lt;</a></div>
-			<div class="tool-box">
+			<div class="tool-box logout">
 				<ul>
-					<li class="active"><a href='#home'><span>Home</span></a></li>
-					<li class="active"><a href='#accManager'><span>Account</span></a>
+					<li class="active"><a href='#home'><span>Trang chủ</span></a></li>
+					<li class="active accmanager"><a href='#accManager'><span>Tài khoản</span></a>
 						<ul>
-							<li><a href='#changePassword'><span>Change Password</span></a></li>
-							<li><a href='#updateInfo'><span>Update Info</span></a></li>
+							<li><a href='#changePassword'><span>Đổi mật khẩu</span></a></li>
+							<li><a href='#updateInfo'><span>Cập nhật thông tin</span></a></li>
 						</ul>
 					</li>
-					<li class="active"><a href='#productManager'><span>Products</span></a>
+					<li class="active productmanager"><a href='#productManager'><span>Sản phẩm</span></a>
 						<ul>
-							<li><a href='#addProduct'><span>Add Product</span></a></li>
-							<li><a href='#showProduct'><span>Show Product</span></a></li>
+							<li><a href='#addProduct'><span>Thêm sản phẩm</span></a></li>
+							<li><a href='#showProduct'><span>Hiện tất cả sản phẩm</span></a></li>
+							<!-- <li><a href='#bidProduct'><span>Bid Product</span></a></li> -->
 						</ul>
 					</li>
 				</ul>

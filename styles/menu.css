@@ -19,8 +19,8 @@
 }
 
 .tool-box {
-  width: 130px;
-  left: -130px;
+  width: 150px;
+  left: -114px;
   -webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -ms-transition: all .5s ease-in-out;
@@ -32,18 +32,19 @@
   font-size: 25px;
   font-weight: bold;
   display: block;
-  background: #121EAD;
+  background: #2980b9;
   color: #ffffff;
-  border-bottom: 1px solid #071A5E;
+  border-bottom: 1px solid #265A88;
   text-transform: uppercase;
   position: relative;
 }
 .tool-box > ul > li > a > span {
-  background: #354AE2;
+  background: #3498db;
   padding: 10px;
   display: block;
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 700;
+  font-family: 'Archivo Narrow', sans-serif;
 }
 .tool-box > ul > li > a:hover {
   text-decoration: none;
@@ -56,7 +57,7 @@
   color: #fff;
 }
 .tool-box > ul > li.active > a span {
-  background: #121EAD;
+  background: #3498db;
 }
 .tool-box span.cnt {
   position: absolute;
@@ -64,7 +65,7 @@
   right: 10px;
   padding: 0;
   margin: 0;
-  background: none;
+  background: #2980b9 !important;
 }
 
 .tool-box ul ul {
@@ -82,7 +83,7 @@
   font-size: 13px;
 }
 .tool-box ul ul a:hover {
-  color: #bd0e36;
+  color: #e74c3c;
 }
 .tool-box ul ul li.odd {
   background: #f4f4f4;
@@ -100,21 +101,27 @@
   transition: all .5s ease-in-out;
 }
 
+.tool-box.logout {
+  left: -150px;
+}
+
 .hide-tool-box.hide {
-  background-color: #354AE2;
+  background-color: #3498db;
 }
 
 .hide-tool-box {
   text-align: center;
   display: none;
   align-items:center;
-  border-bottom: 1px solid #354AE2;
-  font-family: 'Open Sans', sans-serif;
+  border-bottom: 1px solid #265A88;
+  border-right: 1px solid #3498db;
+  border-top: 1px solid #3498db;
+  /*font-family: 'Open Sans', sans-serif;*/
   color: #fff;
   width: 35px;
   min-height: 35px;
   margin-top: 30px;
-  background-color: #354AE2;
+  background-color: #3498db;
   text-transform: uppercase;
 }
 

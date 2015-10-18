@@ -3,19 +3,19 @@ show = function(f,callback) {
 	$(f).parent().addClass('in');
 	$(f).addClass('in');
 	$(f).css({top: 0, opacity: 0}).
-    	animate({top: 50, opacity: 1}, 400, callback != undefined ? callback() : null);
+	animate({top: 50, opacity: 1}, 400, callback != undefined ? callback() : null);
 }
 
 hide = function(f, callback) {
 	$(f).css({top: 50, opacity: 1}).
-    	animate({top: 0, opacity: 0}, 400, function(){
-    		$(f).removeClass('in');
-			$(f).parent().removeClass('in');
-    		$('.fade-ground').removeClass('in');
-    		resetAll(f);
-    		$(f).find('input').val('');
-    		reloadProduct();
-    	});
+	animate({top: 0, opacity: 0}, 400, function(){
+		$(f).removeClass('in');
+		$(f).parent().removeClass('in');
+		$('.fade-ground').removeClass('in');
+		resetAll(f);
+		$(f).find('input').val('');
+		reloadProduct();
+	});
 }
 
 initRegisterModal = function() {
@@ -30,21 +30,14 @@ initRegisterModal = function() {
 					var obj = createInserAccountObj(modal);
 					modal.load('modal/waiting.html', function(){
 						modal.find('.waiting-modal').addClass('in');
-						$.ajax({
-							url:'Core/register.php',
-							type:'post',
-							data: obj,
-							success: function(data) {
-								var _modal = modal.find('.waiting-modal');
-								_modal.removeClass('in');
-								if (data == 1) {
-									showSuccessful("Register Successfully!");
-								} else if (data == 3) {
-									showError("Account is already existed!");
-								} else if (data == 4) {
-									showError("Query error!");
-								}
-							}
+						vRqs(obj, function(data) {
+							var _modal = modal.find('.waiting-modal');
+							_modal.removeClass('in');
+							if (data == 1) {
+								showSuccessful(message["Register"][data]);
+							} else {
+								showError(message["Register"][data]);
+							} 
 						});
 					});
 				}
@@ -59,61 +52,61 @@ function bindBasicEventOnModal(modal) {
 	modal.find('.btn-cancel').unbind().click(function(){
 		hide(modal);
 	});
-	 $('.modal-region').on('click', function (e) {
-	 	$('.modal').each(function () {
-	 		if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.modal').has(e.target).length === 0) {
-	 			hide(modal);
-	 		}
-	 	});
-	 });
+	$('.modal-region').on('click', function (e) {
+		$('.modal').each(function () {
+			if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.modal').has(e.target).length === 0) {
+				hide(modal);
+			}
+		});
+	});
 }	
 
 initLoginModal = function() {
-	$.ajax({
-		url:'Core/authentication.php',
-		type:'get',
-		success: function(data){
-			if (data == "NO_SESSION") {
-				$('.modal-region').load('modal/login.html', function(){
-					var modal = $(this);
-					var login = modal.find('.login-modal');
-					show(login, function(){
-						bindBasicEventOnModal(login);
-						modal.find('button.btn-login').unbind().click(function() {
-							var error = validateFormField(modal);
-							if (!error) {
-								var obj = createLoginObj(modal);
-								modal.load('modal/waiting.html', function(){
-									modal.find('.waiting-modal').addClass('in');
-									$.ajax({
-										url:'Core/login.php',
-										type:'post',
-										data: obj,
-										success: function(data) {
-											var _modal = modal.find('.waiting-modal');
-											_modal.removeClass('in');
-											var result = data.split('|')[0];
-											if (result == 1) {
-												showSuccessful("Login Successfully!");
-												loginComplete(data.split('|')[1],data.split('|')[2]);
-											} else {
-												showError("Login failed!");
-											}
-										}
-									});
+	vRqs({
+		Name: 'fAuthentication'
+	}, function(data) {
+		if (data == "NO_SESSION") {
+			$('.modal-region').load('modal/login.html', function(){
+				var modal = $(this);
+				var login = modal.find('.login-modal');
+				show(login, function(){
+					bindBasicEventOnModal(login);
+					modal.find('button.btn-login').unbind().click(function() {
+						var error = validateFormField(modal);
+						if (!error) {
+							var obj = createLoginObj(modal);
+							modal.load('modal/waiting.html', function(){
+								modal.find('.waiting-modal').addClass('in');
+								vRqs(obj, function(data) {
+									var _modal = modal.find('.waiting-modal');
+									_modal.removeClass('in');
+									var result = data.split('|')[0];
+									if (result == 1) {
+										showSuccessful(message["Login"][result]);
+										loginComplete(data.split('|')[1],data.split('|')[2]);
+									} else {
+										showError(message["Login"][result]);
+									}
 								});
-							}
-						});
-					})
-				});
-			} else {
-				$('.fade-ground').removeClass('in');
-				var id = data.split('|')[0];
-				var username = data.split('|')[1];
-				loginComplete(id,username);
-			}
+							});
+						}
+					});
+				})
+			});
+		} else {
+			$('.fade-ground').removeClass('in');
+			var id = data.split('|')[0];
+			var username = data.split('|')[1];
+			loginComplete(id,username);
 		}
 	});
+	// $.ajax({
+	// 	url:'Core/authentication.php',
+	// 	type:'get',
+	// 	success: function(data){
+
+	// 	}
+	// });
 }
 
 function validateFormField(f) {
@@ -125,7 +118,7 @@ function validateFormField(f) {
 		if ($(input).val() == '' && $(input).attr('data-require') == 'required') {
 			$(input).addClass('error');
 			$('.modal .modal-content').find('.error-message')
-				.html($(input).attr('name') + ' is required!').slideDown(100);
+			.html($(input).attr('name') + ' is required!').slideDown(100);
 			error = true;
 			return false;
 		}
@@ -137,38 +130,44 @@ function validateFormField(f) {
 		if (pass != confirmpass) {
 			f.find('input[name="Confirm"]').addClass('error');
 			$('.register-modal .modal-content').find('.error-message')
-				.html('Confirm password missmatch!').slideDown(100);
+			.html('Confirm password missmatch!').slideDown(100);
+			// error = true;
 		}
 	}
 
+	if ($('textarea').length > 0) {
+		if ($('textarea').val() == "") {
+			error = true;
+		}
+	}
 	return error;
 }
 
 function resetAll(f) {
 	f.find('input').removeClass('error');
-	$('.register-modal .modal-content').find('.error-message').css('display','none');
+	f.find('.modal-content').find('.error-message').slideUp(100);
 }
 
 function createInserAccountObj(f){
 	var obj = {};
+	obj.Name = "fRegister";
+	obj.Data = {};
 	var inputs = f.find('input');
 	$.each(inputs, function(_,input){
 		var val = $(input).val();
-		// if ($(input.attr('name') == 'Password' || $(input.attr('name') == 'Confirm'))
-		
-		obj[$(input).attr('name')] = val;
+		obj.Data[$(input).attr('name')] = val;
 	});
-	if (f.find('select[name="Sex"]').val() != -1)
-		obj['Sex'] = f.find('select[name="Sex"]').val();
 	return obj;
 }
 
 function createLoginObj(f){
 	var obj = {};
+	obj.Name = "fLogin";
+	obj.Data = {};
 	var username = f.find('input[name="Username"]').val();
 	var password = f.find('input[name="Password"]').val();
-	obj["Username"] = username;
-	obj["Password"] = password;
+	obj.Data["Username"] = username;
+	obj.Data["Password"] = password;
 	return obj;
 }
 
@@ -177,6 +176,7 @@ showSuccessful = function(message) {
 		show($('.message-modal'), function(){
 			bindBasicEventOnModal($('.message-modal'));
 			$('.message-modal .modal-content').find('h2').html(message);
+			autoHidePopup(2000,$('.message-modal'))
 		});
 	})
 }
@@ -186,6 +186,7 @@ showError = function(message) {
 		show($('.error-modal'), function(){
 			bindBasicEventOnModal($('.error-modal'));
 			$('.error-modal .modal-content').find('h2').html(message);
+			autoHidePopup(2000,$('.error-modal'))
 		});
 	});
 }
@@ -226,4 +227,16 @@ showUpdateInfo = function(callback) {
 			callback();
 		});
 	})
+}
+
+autoHidePopup = function(timeout,popup) {
+	var repeatPopUp = 0;
+	setInterval(function(){
+		if(repeatPopUp < 1) {
+			if ($(popup).length > 0) {
+				hide($(popup));
+				repeatPopUp++;
+			}
+		}
+	}, timeout);
 }

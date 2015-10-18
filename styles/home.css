@@ -77,14 +77,20 @@ body {
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
+	opacity: 0.9;
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 10px 50px;
-	transition:bottom 0.3s linear;
+		-webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .footer-distributed:hover {
 	bottom: 0;
+	opacity: 1;
 }
 
 .footer-distributed .footer-left,
@@ -177,8 +183,16 @@ body {
 .footer-distributed .footer-center p a{
 	color:  #5383d3;
 	text-decoration: none;;
+	-webkit-transition: color 0.2s linear;
+    -moz-transition: color 0.2s linear;
+    -ms-transition: color 0.2s linear;
+    -o-transition: color 0.2s linear;
+    transition: color 0.2s linear;
 }
 
+.footer-distributed .footer-center p a:hover{
+	color:  #f1c40f;
+}
 
 /* Footer Right */
 

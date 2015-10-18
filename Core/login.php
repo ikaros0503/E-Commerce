@@ -4,10 +4,10 @@ $conn = connectToDB();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-mysqli_select_db($conn,'assignment_ado');
+mysqli_select_db($conn,$db_name);
 $username = $_POST['Username'];
 $password = $_POST['Password'];
-$query = "Select Id, Username, Password from Account where Username='$username' and IsPrgStatus=1";
+$query = "Select Id, Username, Password from account where Username='$username' and IsPrgStatus=1";
 $result = mysqli_query($conn,$query);
 disconnectToDB($conn);
 if ($result->num_rows > 0) {

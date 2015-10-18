@@ -19,10 +19,10 @@ resultProductTpl= '<li data-id="{ProductId}">'+
                 '</div>' +
                 '<div class="tool text-center">'+
                     '<button type="button" class="btn btn-success btn-edit">'+
-                        'Edit'+
+                        'Sửa'+
                     '</button>&nbsp;&nbsp'+
                     '<button type="button" class="btn btn-danger btn-remove text-center">'+
-                        'Remove'+
+                        'Xóa'+
                     '</button>'+
                 '</div>'+
                 '</li>';

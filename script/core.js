@@ -1,6 +1,7 @@
 var user = {};
 var products = {};
 var yourproduct = {};
+var bidproduct = {};
 var isLogin = false;
 
 $(document).ready(function(e){
@@ -8,44 +9,51 @@ $(document).ready(function(e){
 	initListener();
 	checkSession();
 	reloadProduct();
+	autoCheckProduct();
 });
 
 checkSession = function(){
-	$.ajax({
-		url:'Core/authentication.php',
-		type: 'get',
-		success: function(data){
-			if (data != "NO_SESSION") {
+	vRqs({
+		Name:'fAuthentication'
+	}, function(data){
+		if (data != "NO_SESSION") {
 				loginComplete(data.split('|')[0],data.split('|')[1]);
 				isLogin = true;
 			}
-		}	
 	});
+	// $.ajax({
+	// 	url:'Core/authentication.php',
+	// 	type: 'get',
+	// 	success: function(data){
+			
+	// 	}	
+	// });
 };
 
 loginComplete = function(id, username) {
 	var obj = {};
-	obj['Id'] = id;
-	$.ajax({
-		url:'Core/getaccount.php',
-		method:'get',
-		data:obj,
-		success: function(data){
-			if (data != "ERROR") {
-				user = jQuery.parseJSON(data);
-				switchToLoginCompletePage();
-				isLogin = true;
-			}
-		}
-	})
-	// switchToLoginCompletePage();
-	// isLogin = true;
+	obj.Name = "fGetAccount";
+	obj.Data = {};
+	obj.Data['Id'] = id;
+	vRqs(obj, function(data){
+		user = jQuery.parseJSON(data);
+			switchToLoginCompletePage();
+			isLogin = true;
+		});
+	// $.ajax({
+	// 	url:'Core/getaccount.php',
+	// 	method:'get',
+	// 	data:obj,
+	// 	success: function(data){
+			
+	// 	}
+	// });
 };
 
 switchToLoginCompletePage = function(){
 	$('.user-account').addClass('hidden');
 	$('.user-login-complete').removeClass('hidden');
-	$('.user-login-complete').find('.welcome').html("WELCOME, " + user.Username)
+	$('.user-login-complete').find('.welcome').html("Xin chào, " + user.Username)
 	$('.hide-tool-box').fadeIn(100,function(){
 		$(this).css('display','flex');
 		initializeMenu();
@@ -53,14 +61,12 @@ switchToLoginCompletePage = function(){
 }
 
 reloadProduct = function(){
-	$.ajax({
-		url:'Core/get-product.php',
-		method:'get',
-		success: function(data) {
-			products = jQuery.parseJSON(data);
-			renderListProduct();
-			initPassproduct();
-		}
+	var obj = {};
+	obj.Name = "fGetProduct";
+	vRqs(obj,function(data){
+		products = jQuery.parseJSON(data);
+		renderListProduct();
+		initPassproduct();
 	});
 }
 
@@ -95,29 +101,34 @@ function renderListProduct() {
 
 function getProductById(id) {
 	var obj = {};
-	obj['Id'] = user.Id;
-	$.ajax({
-		url:'Core/get-product.php',
-		method:'get',
-		data: obj,
-		success: function(data){
-			yourproduct = jQuery.parseJSON(data);
-			renderResult(yourproduct);
-		}
+	obj.Name = 'fGetProduct';
+	obj.Data = {};
+	obj.Data['Id'] = user.Id;
+	vRqs(obj,function(data){
+		yourproduct = jQuery.parseJSON(data);
+		renderResult(yourproduct);
 	});
 }
 
 function getProductByName(name) {
 	var obj = {};
-	obj['Name'] = name;
-	$.ajax({
-		url:'Core/get-product.php',
-		method:'get',
-		data: obj,
-		success: function(data){
-			yourproduct = jQuery.parseJSON(data);
-			renderResult(yourproduct);
-		}
+	obj.Name = 'fGetProduct';
+	obj.Data = {};
+	obj.Data['Name'] = name;
+	vRqs(obj, function(data){
+		yourproduct = jQuery.parseJSON(data);
+		renderResult(yourproduct);
+	});
+}
+
+function getProductByCurrentUser(name) {
+	var obj = {};
+	obj.Name = "fGetProduct";
+	obj.Data = {};
+	obj.Data['CurrentUser'] = name;
+	vRqs(obj, function(){
+		bidproduct = jQuery.parseJSON(data);
+		renderResult(bidproduct);
 	});
 }
 
@@ -126,16 +137,27 @@ loadBanner = function(){
 		$('.container').load('templates/banner.html',function(){
 			$(this).css('width',"72%");
 			$("#owl-example").owlCarousel({
-		    	slideSpeed : 300,
-		    	paginationSpeed : 400,
-		    	singleItem:true,
-		    	navigaionText:false,
-		    	autoPlay:5000,
-		   		pagination:true,
-		   		paginationNumbers:true,
+				slideSpeed : 300,
+				paginationSpeed : 400,
+				singleItem:true,
+				navigaionText:false,
+				autoPlay:5000,
+				pagination:true,
+				paginationNumbers:true,
 			});
 			$(this).fadeIn(200);
 		});
 	})
+	
+}
+
+autoCheckProduct = function() {
+	setInterval(function(){
+		var obj = {};
+		obj.Name = 'UpdateProduct';
+		vRqs(obj,function(data){
+			console.log(data);
+		});
+	}, 300000);
 	
 }

@@ -27,7 +27,7 @@ initListener = function() {
 				$(this).load('templates/showproduct.html',function(){
 					$(this).css('width','72%');
 					getProductByName(name);
-					$('.module-header.show-product h2').html("SEARCH RESULT");
+					$('.module-header.show-product h2').html("KẾT QUẢ TÌM KIẾM");
 					$(this).fadeIn(200, function(){});
 				});
 			})
@@ -71,23 +71,28 @@ bindEventOnShowProduct = function(item){
 		showConfirm("Bạn thực sự muốn xóa sản phẩm " + name + "?", function(e){
 			$('.btn-confirm').unbind().click(function(){
 				var obj = {};
-				obj['Id'] = id;
-				obj['IsPrgStatus'] = 4;
-				$.ajax({
-					url:'Core/update-product.php',
-					method:'post',
-					data: obj,
-					success: function(data) {
-						$('.confirm-modal').removeClass('in');
-						if (data != "ERROR") {
-							showSuccessful('Remove product successfully');
-							getProductById(user.Id);
-						} else {
-							showError('An error has occur! Please try again!')
-						}
+				obj.Name = "UpdateProduct";
+				obj.Data = {};
+				obj.Data['Id'] = id;
+				obj.Data['IsPrgStatus'] = 4;
+				vRqs(obj, function(data){
+					$('.confirm-modal').removeClass('in');
+					if (data != "ERROR") {
+						showSuccessful('Remove product successfully');
+						getProductById(user.Id);
+					} else {
+						showError('Có lỗi xảy ra, vui lòng thử lại');
 					}
 				})
-			});
+				// $.ajax({
+				// 	url:'Core/update-product.php',
+				// 	method:'post',
+				// 	data: obj,
+				// 	success: function(data) {
+
+				// 	}
+				// })
+		});
 		});
 	});
 
@@ -160,23 +165,20 @@ bindEventOnEditForm = function(form, id){
 		var type = form.find('select').val();
 		var name = form.find('input[name="ProductName"]').val();
 		var obj = {};
-		obj['Duration'] = duration;
-		obj['Type'] = type;
-		obj['Info'] = info;
-		obj['Id'] = id;
-		obj['Name'] = name;
-		$.ajax({
-			url:'Core/update-product.php',
-			method:'post',
-			data: obj,
-			success: function(data){
-				if (data != "ERROR") {
-					showSuccessful("Update product successfully!");
-					$('a[href="#showProduct"]').click();
-				} else {
-					showError("An error occur! Please try again!");
-				}
+		obj.Name = "UpdateProduct";
+		obj.Data = {};
+		obj.Data['Duration'] = duration;
+		obj.Data['Type'] = type;
+		obj.Data['Info'] = info;
+		obj.Data['Id'] = id;
+		obj.Data['Name'] = name;
+		vRqs(obj, function(data){
+			if (data == 1) {
+				showSuccessful(message["Update_Product"][data]);
+				$('a[href="#showProduct"]').click();
+			} else {
+				showError(message["Update_Product"][data]);
 			}
-		})
+		});
 	});
 }

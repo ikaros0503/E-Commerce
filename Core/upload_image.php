@@ -4,7 +4,7 @@ $conn = connectToDB();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-mysqli_select_db($conn,'assignment_ado');
+mysqli_select_db($conn,$db_name);
 $id = $_POST['Id'];
 $sql = "update product set productimg='";
 $productimg = "";
@@ -28,8 +28,8 @@ for ($i = 1; $i < 4; $i++) {
 $sql = $sql.$productimg."' where ProductId=".$id;
 $result = mysqli_query($conn,$sql);
 if ($result) {
-	echo "SUCCESS";
+	echo 1;
 } else {
-	echo $sql;
+	echo 2;
 }
 ?>

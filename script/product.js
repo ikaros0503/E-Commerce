@@ -74,7 +74,6 @@ function initEventForSlider() {
 
 function renderProduct(id) {
 	var product = getCurrentProduct(id);
-	console.log(product);
 	var product_view = $('.product.product-details');
 	product_view.find('.product-name').html(product.Name);
 	product_view.find('.author').html(product.Username);
@@ -140,35 +139,36 @@ function initEventToBidButton(id) {
 				if (price >= 1000) {
 					$(this).val(toMoney(price));
 				}
+			}).keydown(function(e){
+					var charCode = e.keyCode
+					if (charCode > 31 && (charCode < 48 || charCode > 57))
+						return false;
 			});
 
 			modal.find('.btn-confirm').unbind().click(function(){
 				var price = modal.find('input[name="Price"]').val();
 				price = price.replace(/\./g,'')
-				if (price <= product.CurrentPrice) {
+				if (parseInt(price) <= parseInt(product.CurrentPrice)) {
 					$('.error-message').html('Giá nhập không được nhỏ hơn giá hiện tại').removeClass('hidden');
 					$('input[name="Price"]').addClass('error');
 				} else {
 					$('.error-message').addClass('hidden');
 					$('input[name="Price"]').removeClass('error');
 					var obj = {};
-					obj['ProductId'] = product.ProductId;
-					obj['CurrentPrice'] = price;
-					obj['CurrentUser'] = user.Username;
-					$.ajax({
-						url:'Core/bet.php',
-						method:'post',
-						data: obj,
-						success: function(data){
-							modal.removeClass('in');
-							if (data != "ERROR") {
-								showSuccessful('Đấu giá thành công!')
-								$('a[href="#home"]').click();
-							} else {
-								showError('Đấu giá thất bại');
-							}
+					obj.Name = "fBet";
+					obj.Data = {};
+					obj.Data['ProductId'] = product.ProductId;
+					obj.Data['CurrentPrice'] = price;
+					obj.Data['CurrentUser'] = user.Username;
+					vRqs(obj, function(data){
+						modal.removeClass('in');
+						if (data == 1) {
+							showSuccessful(message["Bid"][data])
+							$('a[href="#home"]').click();
+						} else {
+							showError(message["Bid"][data]);
 						}
-					})
+					});
 				}
 			});
 		});
@@ -177,6 +177,19 @@ function initEventToBidButton(id) {
 
 function initCountdown(id) {
 	var product = getCurrentProduct(id);
+	if (Date.parse(product.ExpireTime) <= Date.parse(new Date()) && product.IsPrgStatus == 2) {
+		var obj = {};
+ 		obj.Name = "UpdateProduct";
+ 		obj.Data = {};
+ 		obj.Data['Id'] = id;
+ 		obj.Data['IsPrgStatus'] = 3;
+ 		vRqs(obj, function(){
+ 			reloadProduct();
+ 			initEventToBidButton();
+ 			initCountdown();
+ 		});
+ 		return;
+	}
 	if (product.IsPrgStatus != 1) {
 		if (product.IsPrgStatus == 2 ) {
 			$('.countdown').html('Sản phẩm đang chờ đấu giá');
@@ -184,21 +197,26 @@ function initCountdown(id) {
 			$('.countdown').html('Sản phẩm đã được đấu giá thành công!');
 		}
 		return;
-	}
+	};
 		$('.countdown').countdown(product.ExpireTime, function(event) {
    			$(this).html(event.strftime('%D ngày %H giờ %M phút %S'));
  		}).on('finish.countdown',function(event){
  			var obj = {};
- 			obj['Id'] = id;
- 			obj['IsPrgStatus'] = 3;
- 			$.ajax({
- 				url:'Core/update-product.php',
- 				method:'post',
- 				data:obj,
- 				success:function(data) {
- 					reloadProduct();
- 				}
+ 			obj.Name = "UpdateProduct";
+ 			obj.Data = {};
+ 			obj.Data['Id'] = id;
+ 			obj.Data['IsPrgStatus'] = 3;
+ 			vRqs(obj, function(){
+ 				reloadProduct();
  			});
+ 			// $.ajax({
+ 			// 	url:'Core/update-product.php',
+ 			// 	method:'post',
+ 			// 	data:obj,
+ 			// 	success:function(data) {
+ 			// 		reloadProduct();
+ 			// 	}
+ 			// });
  		});
 }
 
@@ -219,14 +237,3 @@ Date.prototype.convertFormat = function() {
 	var fullString = year+'/'+month+'/'+dates+' '+hours+':'+minutes+':'+second;
 	return fullString;
 }
-
-// function convertFormat(date) {
-// 	var year = date.getFullYear();
-// 	var month = date.getMonth()+1;
-// 	var date = date.getDate();
-// 	var hours = date.getHours();
-// 	var minutes = date.getMinutes();
-// 	var second = date.getSeconds();
-// 	var fullString = year+'/'+month+'/'date+' '+hours+':'+minutes+':'+second;
-// 	return fullString;
-// }
