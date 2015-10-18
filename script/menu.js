@@ -26,7 +26,6 @@ bindEventOnMenu = function(){
 	});
 	$('.tool-box > ul > li > a').click(function() {
 		var checkElement = $(this).next();
-		//$('.tool-box li').removeClass('active');
 		$(this).closest('li').addClass('active'); 
 
 		if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
@@ -66,18 +65,7 @@ bindEventOnMenu = function(){
 						showError(message["Password"][data]);
 					}
 				});
-				// $.ajax({
-				// 	url:'Core/update-account.php',
-				// 	method:'post',
-				// 	data:obj,
-				// 	success: function(data){
-				// 		if (data == 1) {
-				// 			showSuccessful(message["Password"][data]);
-				// 		} else {
-				// 			showError(message["Password"][data]);
-				// 		}
-				// 	}
-				// });
+				
 			});
 		}
 		showChangePass(callback);

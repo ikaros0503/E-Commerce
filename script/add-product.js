@@ -33,7 +33,7 @@ function bindEvent() {
 		var startPrice = $('.container input[name="StartPrice"]').val();
 		var duration = $('.container input[name="Duration"]').val();
 		var typeOfAuction = $('.container select').val();
-		// startPrice = startPrice.replace(/\./g,'');
+		startPrice = startPrice.replace(/\./g,'');
 		var obj = {};
 		obj.Name = "InsertProduct";
 		obj.Data = {};
