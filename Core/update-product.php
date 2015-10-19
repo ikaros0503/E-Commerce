@@ -19,18 +19,21 @@ if (!isset($_POST)) {
 	}
 	die;
 }
-$id = $_POST['Id'];
+$id = "Id";
 $duration = "Duration";
 $type = "Type";
 $name = "Name";
 $info = "Info";
 $status = "IsPrgStatus";
+$history = "History";
+if (isset($_POST['Id'])) $id = $_POST['Id'];
 if (isset($_POST['Duration'])) $duration = "'".$_POST['Duration']."'";
 if (isset($_POST['Type'])) $type = "'".$_POST['Type']."'";
 if (isset($_POST['Name'])) $name = "'".$_POST['Name']."'";
 if (isset($_POST['Info'])) $info = "'".$_POST['Info']."'";
 if (isset($_POST['IsPrgStatus'])) $status = $_POST['IsPrgStatus'];
-$sql = "Update product set Duration=$duration, Type=$type,Name=$name,Info=$info, IsPrgStatus=$status, ExpireTime = DATE_ADD(StartTime, INTERVAL $duration HOUR) where ProductId=$id";
+if (isset($_POST['History'])) $history = "'".$_POST['History']."'";
+$sql = "Update product set Duration=$duration, Type=$type,Name=$name,Info=$info, IsPrgStatus=$status,History = $history, ExpireTime = DATE_ADD(StartTime, INTERVAL $duration HOUR) where ProductId=$id";
 $result = mysqli_query($conn,$sql);
 if ($result) {
 	if ($status != 3)

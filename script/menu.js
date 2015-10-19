@@ -132,7 +132,7 @@ $('a[href="#bidProduct"]').click(function(e){
 	$('.container').fadeOut(200,function(){
 		$(this).load('templates/showproduct.html', function(){
 			$(this).css('width','72%');
-			getProductByCurrentUser(user.Username);
+			getProductByUser(user.Username);
 			$(this).fadeIn(200,function(){
 			});
 		});

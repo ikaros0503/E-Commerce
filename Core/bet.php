@@ -8,7 +8,9 @@ mysqli_select_db($conn,$db_name);
 $product_id = $_POST['ProductId'];
 $price = $_POST['CurrentPrice'];
 $user = $_POST['CurrentUser'];
-$sql = "Update product set currentprice='$price', CurrentUser = '$user', TotalBet=TotalBet+1 where ProductId = $product_id";
+$history = "History";
+if (isset($_POST['History'])) $history = "'".$_POST['History']."'";
+$sql = "Update product set currentprice='$price', CurrentUser = '$user', TotalBet=TotalBet+1,History=$history where ProductId = $product_id";
 $result = mysqli_query($conn,$sql);
 if ($result) {
 	echo 1;

@@ -121,15 +121,14 @@ function getProductByName(name) {
 	});
 }
 
-function getProductByCurrentUser(name) {
-	var obj = {};
-	obj.Name = "fGetProduct";
-	obj.Data = {};
-	obj.Data['CurrentUser'] = name;
-	vRqs(obj, function(){
-		bidproduct = jQuery.parseJSON(data);
-		renderResult(bidproduct);
+function getProductByUser(name) {
+	bidproduct = [[]];
+	$.each(products, function(_,product){
+		if (product.History != undefined && product.History.indexOf(name) >= 0) {
+			bidproduct.push(product);
+		}
 	});
+	renderResult(bidproduct,true);
 }
 
 loadBanner = function(){

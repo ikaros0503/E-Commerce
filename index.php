@@ -67,7 +67,7 @@
 						<ul>
 							<li><a href='#addProduct'><span>Thêm sản phẩm</span></a></li>
 							<li><a href='#showProduct'><span>Hiện tất cả sản phẩm</span></a></li>
-							<!-- <li><a href='#bidProduct'><span>Bid Product</span></a></li> -->
+							<li><a href='#bidProduct'><span>Sản phẩm đã đấu giá</span></a></li>
 						</ul>
 					</li>
 				</ul>

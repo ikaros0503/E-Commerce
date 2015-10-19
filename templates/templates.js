@@ -17,6 +17,8 @@ resultProductTpl= '<li data-id="{ProductId}">'+
                 '<div class="image-preview">'+
                 '<img src="img/product/{ProductId}/{ProductImg}">'+
                 '</div>' +
+                '<div class="product-name text-center date-bid hidden">Ngày: {BidDate}</div>' +
+                '<div class="product-name text-center date-bid hidden">Giá: {Price}</div>'+ 
                 '<div class="tool text-center">'+
                     '<button type="button" class="btn btn-success btn-edit">'+
                         'Sửa'+
